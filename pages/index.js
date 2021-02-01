@@ -1,59 +1,118 @@
+import { useCallback, useMemo, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+const Home = () => {
+	const [isEven, setIsEven] = useState(null)
+	const evenDays = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]
+	const oddDays = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]
+	const days = [
+		'Lunes',
+		'Martes',
+		'Miércoles',
+		'Jueves',
+		'Viernes',
+		'Sábado',
+		'Domingo',
+	]
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+	const currentWeek = useMemo(() => {
+		let curr = new Date()
+		let week = []
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+		for (let i = 1; i <= 7; i++) {
+			let first = curr.getDate() - curr.getDay() + i
+			let day = new Date(curr.setDate(first)).getDate()
+			week.push(day)
+		}
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+		return week
+	}, [])
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+	const handleClick = number => {
+		const isNumberEven = number % 2 == 0
+		console.log('es par:' + isNumberEven)
+		setIsEven(isNumberEven)
+	}
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+	const leaveHome = day => {
+		const allDaysDefined = [...evenDays, ...oddDays]
+		const isDefined = allDaysDefined.some(element => element === day)
+		switch (isEven) {
+			case true:
+				const dayInEventDays = evenDays.some(element => element === day)
+				return dayInEventDays ? true : isDefined ? false : null
+			case false:
+				const dayInOddDays = oddDays.some(element => element === day)
+				return dayInOddDays ? true : isDefined ? false : null
+		}
+	}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+	return (
+		<div className={styles.container}>
+			<header>
+				<img src="/" alt="Pico y cédula en CALI" />
+			</header>
+			<nav>
+				<h2>
+					<span></span>Último dígito de tu cédula:
+				</h2>
+				{new Array(10).fill(null).map((item, i) => (
+					<button onClick={() => handleClick(i)} key={i}>
+						{i}
+					</button>
+				))}
+			</nav>
+			<main>
+				<section>
+					<ul>
+						{currentWeek.map((day, i) => {
+							const leaveFromHome = leaveHome(day)
+							console.log(leaveFromHome)
+							return (
+								<li key={day}>
+									<div>
+										<span>{`${
+											leaveFromHome
+												? '✅'
+												: leaveFromHome === false
+												? '❌'
+												: '❔'
+										}${days[i]} ${day}: ${
+											leaveFromHome
+												? 'Puedes salir.'
+												: leaveFromHome === false
+												? 'Quédate en casa.'
+												: isEven !== null
+												? 'Aún no está definido'
+												: 'Ingresa el último dígito de tu cédula ↑'
+										}`}</span>
+										<span></span>
+									</div>
+								</li>
+							)
+						})}
+					</ul>
+				</section>
+				<section>
+					<span>Anuncios</span>
+					<span></span>
+				</section>
+			</main>
+			<footer>
+				<span>
+					Desarrollado por:{' '}
+					<a
+						href="https://www.instagram.com/juandagarciaa/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						@JuandaGarciaa
+					</a>
+				</span>
+				<img src="/" alt="Mano" />
+			</footer>
+		</div>
+	)
 }
+
+export default Home
