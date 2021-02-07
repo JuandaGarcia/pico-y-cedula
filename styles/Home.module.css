@@ -239,6 +239,10 @@
 	font-size: 0.8rem;
 }
 
+.footer__link {
+	font-weight: bold;
+}
+
 .footer__hand {
 	position: absolute;
 	right: 0;

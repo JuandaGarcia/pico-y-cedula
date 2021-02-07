@@ -180,14 +180,15 @@ const Home = () => {
 			</div>
 			<footer className={s.footer}>
 				<div className={s.footer__container}>
-					<span className={s.footer__link}>
+					<span>
 						Desarrollado por:{' '}
 						<a
 							href="https://www.instagram.com/juandagarciaa/"
 							target="_blank"
 							rel="noopener noreferrer"
+							className={s.footer__link}
 						>
-							@JuandaGarciaa
+							@JuandaGarcia
 						</a>
 					</span>
 					<img className={s.footer__hand} src="/img/hand.png" alt="Mano" />
