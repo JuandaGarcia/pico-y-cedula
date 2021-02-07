@@ -16,15 +16,6 @@ const Home = () => {
 	const oddDigits = '1, 3, 5, 7, 9'
 	const evenDays = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]
 	const oddDays = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]
-	const days = [
-		'Lunes',
-		'Martes',
-		'Miércoles',
-		'Jueves',
-		'Viernes',
-		'Sábado',
-		'Domingo',
-	]
 
 	useEffect(() => {
 		const date = new Date()
@@ -41,15 +32,23 @@ const Home = () => {
 	}, [])
 
 	const currentWeek = useMemo(() => {
-		let curr = new Date()
+		const days = [
+			'Domingo',
+			'Lunes',
+			'Martes',
+			'Miércoles',
+			'Jueves',
+			'Viernes',
+			'Sábado',
+		]
+		const curr = new Date()
+		const first = curr.getDate() - curr.getDay()
 		let week = []
 
-		for (let i = 1; i <= 7; i++) {
-			let first = curr.getDate() - curr.getDay() + i
-			let day = new Date(curr.setDate(first)).getDate()
-			week.push(day)
+		for (let i = 0; i < 7; i++) {
+			const day = new Date(curr.setDate(first + i))
+			week.push({ day: day.getDate(), nameDay: days[day.getDay()] })
 		}
-
 		return week
 	}, [])
 
@@ -150,12 +149,15 @@ const Home = () => {
 					<section>
 						<ul className={s.daysList}>
 							{currentWeek.map((day, i) => {
-								const dataDay = getDayObject(leaveHome(day))
+								const dataDay = getDayObject(leaveHome(day.day))
 								return (
-									<li key={day}>
+									<li key={day.nameDay}>
 										<div className={cn(s.daysList__item, dataDay.border)}>
 											<span>{dataDay.icon}</span>
-											<span>{`${days[i]} ${day}: ${dataDay.text}`}</span>
+											<span>{`${day.nameDay} ${day.day}: ${dataDay.text}`}</span>
+											{i === 0 ? (
+												<span className={s.daysList__item__today}>Hoy</span>
+											) : null}
 										</div>
 									</li>
 								)

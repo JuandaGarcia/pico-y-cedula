@@ -179,7 +179,7 @@
 
 .daysList__item {
 	display: grid;
-	grid-template-columns: max-content auto;
+	grid-template-columns: max-content auto max-content;
 	text-align: center;
 	grid-gap: 1rem;
 	align-items: center;
@@ -196,6 +196,15 @@
 }
 .daysList__itemRed {
 	border: 2px solid var(--red);
+}
+
+.daysList__item__today {
+	display: inline-block;
+	padding: 0.2rem 0.5rem;
+	font-size: 0.6rem;
+	background: linear-gradient(to right, #6418fb, #3719e5);
+	color: var(--white);
+	border-radius: 1rem;
 }
 
 .adsContainer {
