@@ -58,6 +58,21 @@ export default function MyApp({ Component, pageProps }) {
 				/>
 				<link rel="apple-touch-icon" href="/icon-152x152.png"></link>
 				<meta name="theme-color" content="#6418fb" />
+				<script
+					async
+					src="https://www.googletagmanager.com/gtag/js?id=G-Q50C2HY4Y9"
+				></script>
+
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							window.dataLayer = window.dataLayer || [];
+							function gtag(){dataLayer.push(arguments);}
+							gtag('js', new Date());
+						
+							gtag('config', 'G-Q50C2HY4Y9');`,
+					}}
+				/>
 			</Head>
 			<Component {...pageProps} />
 		</>

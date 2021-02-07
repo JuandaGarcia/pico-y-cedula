@@ -10,7 +10,7 @@
 	"shortcuts": [
 		{
 			"name": "¿Puedo salir de casa?",
-			"short_name": "Inicio",
+			"short_name": "¿Puedo salir de casa?",
 			"description": "Inicio de la aplicación",
 			"url": "/",
 			"icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
