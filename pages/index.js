@@ -1,15 +1,19 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import cn from 'classnames'
 import s from '../styles/Home.module.css'
 
 const Home = () => {
 	const [isEven, setIsEven] = useState(null)
 	const [selectedDigit, setSelectedDigit] = useState(null)
+	const [today, setToday] = useState('')
+	const todayIsEven = new Date().getDate() % 2 === 0
 	const dateOptions = {
 		weekday: 'long',
 		month: 'long',
 		day: 'numeric',
 	}
+	const eventDigits = '0, 2, 4, 6, 8'
+	const oddDigits = '1, 3, 5, 7, 9'
 	const evenDays = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]
 	const oddDays = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]
 	const days = [
@@ -21,6 +25,20 @@ const Home = () => {
 		'Sábado',
 		'Domingo',
 	]
+
+	useEffect(() => {
+		const date = new Date()
+			.toLocaleDateString(undefined, dateOptions)
+			.toString()
+		setToday(date[0].toUpperCase() + date.slice(1))
+		const getSelectedDigit = localStorage.getItem('selectedDigit')
+		if (getSelectedDigit) {
+			const parseNumber = parseInt(getSelectedDigit)
+			const isNumberEven = parseNumber % 2 === 0
+			setIsEven(isNumberEven)
+			setSelectedDigit(parseNumber)
+		}
+	}, [])
 
 	const currentWeek = useMemo(() => {
 		let curr = new Date()
@@ -36,9 +54,10 @@ const Home = () => {
 	}, [])
 
 	const handleClick = number => {
-		const isNumberEven = number % 2 == 0
+		const isNumberEven = number % 2 === 0
 		setIsEven(isNumberEven)
 		setSelectedDigit(number)
+		localStorage.setItem('selectedDigit', number)
 	}
 
 	const leaveHome = day => {
@@ -72,17 +91,43 @@ const Home = () => {
 			<div className={s.container}>
 				<header className={s.header}>
 					<div className={s.header__logo}>
-						<h1 className={s.header__logo__h1}>Pico y Cédula en Cali</h1>
+						<h1 className={s.header__logo__h1}>Pico y Cédula Cali</h1>
 						<img
 							className={s.header__logo__img}
-							src="/img/sanitizer.png"
-							alt="Pico y cédula en CALI"
+							src="/img/logo.png"
+							alt="Pico y cédula CALI"
 						/>
 					</div>
-					<span>
-						{/* {new Date().toLocaleDateString(undefined, dateOptions)} */}
-					</span>
+					<h2 className={s.header__date}>{today}</h2>
 				</header>
+				<section className={s.cardsContainer}>
+					<article className={s.card}>
+						<div className={s.card__date}>
+							<span>{today}</span>
+						</div>
+						<div className={s.card__content}>
+							<h3 className={s.card__content__title}>
+								Pueden salir personas cuya cédula termina en:
+							</h3>
+							<p className={s.card__content__digits}>
+								🛒 {todayIsEven ? eventDigits : oddDigits} 🛒
+							</p>
+						</div>
+					</article>
+					<article className={s.card}>
+						<div className={s.card__date}>
+							<span>{today}</span>
+						</div>
+						<div className={s.card__content}>
+							<h3 className={s.card__content__title}>
+								NO pueden salir personas cuya cédula termina en:
+							</h3>
+							<p className={s.card__content__digits}>
+								❗ {todayIsEven ? oddDigits : eventDigits} ❗
+							</p>
+						</div>
+					</article>
+				</section>
 				<nav className={s.nav}>
 					<h2 className={s.nav__digitsTitle}>
 						<span className={s.idCardIcon}></span>Último dígito de tu cédula:
@@ -134,17 +179,19 @@ const Home = () => {
 				</main>
 			</div>
 			<footer className={s.footer}>
-				<span>
-					Desarrollado por:{' '}
-					<a
-						href="https://www.instagram.com/juandagarciaa/"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						@JuandaGarciaa
-					</a>
-				</span>
-				<img src="/" alt="Mano" />
+				<div className={s.footer__container}>
+					<span className={s.footer__link}>
+						Desarrollado por:{' '}
+						<a
+							href="https://www.instagram.com/juandagarciaa/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							@JuandaGarciaa
+						</a>
+					</span>
+					<img className={s.footer__hand} src="/img/hand.png" alt="Mano" />
+				</div>
 			</footer>
 		</div>
 	)

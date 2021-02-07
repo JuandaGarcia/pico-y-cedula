@@ -10,10 +10,13 @@
 
 :root {
 	--dark: #3f3f3f;
+	--white: #fff;
 	--gray: #dadada;
+	--green-strong: #4dff74;
+	--red-strong: #fb3a3a;
 	--green: #99ffc2;
 	--red: #ffc7c7;
-	--blue: #3485ff;
+	--blue: #6418fb;
 	--footer-height: 4rem;
 }
 

@@ -12,28 +12,109 @@
 
 .header {
 	width: 100%;
-	grid-template-columns: 1fr;
-	justify-items: center;
 	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 2.5rem;
+	justify-items: center;
 }
 
 .header__logo {
 	display: grid;
 	grid-template-columns: auto auto;
+	grid-gap: 1rem;
 	user-select: none;
 	align-items: center;
 }
 
 .header__logo__h1 {
-	font-size: 2.4rem;
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-image: linear-gradient(90deg, #56ccf2, #2f80ed);
+	font-size: 1.6rem;
+	color: var(--blue);
 }
 
 .header__logo__img {
 	width: 4rem;
+}
+
+.header__date {
+	text-align: center;
+}
+
+.cardsContainer {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: max-content;
+	grid-gap: 2.5rem;
+}
+
+.card {
+	width: 100%;
+	min-height: 12rem;
+	padding: 1rem;
+	border-radius: 0.625rem;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	grid-gap: 2.5rem;
+	box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12),
+		0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-align: center;
+}
+
+.card * {
+	color: var(--white);
+}
+
+.card:first-child {
+	background-image: url('/img/si.jpg');
+}
+.card:last-child {
+	background-image: url('/img/no.jpg');
+}
+
+.card__date {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: max-content;
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.3125rem;
+	font-weight: bold;
+}
+.card:first-child .card__date {
+	background: var(--green-strong);
+}
+.card:last-child .card__date {
+	background: var(--red-strong);
+}
+
+.card__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 4.125rem;
+	padding: 1rem;
+	border-radius: 0.625rem;
+	-webkit-backdrop-filter: saturate(180%) blur(15px);
+	backdrop-filter: saturate(180%) blur(15px);
+}
+
+.card:first-child .card__content {
+	background: rgba(8, 15, 20, 0.3);
+}
+.card:last-child .card__content {
+	background: rgba(175, 64, 70, 0.3);
+}
+
+.card__content__title {
+	font-size: 1.125rem;
+	font-weight: 500;
+}
+.card__content__digits {
+	font-size: 1.1rem;
+	font-weight: 500;
 }
 
 .nav {
@@ -98,7 +179,8 @@
 
 .daysList__item {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: max-content auto;
+	text-align: center;
 	grid-gap: 1rem;
 	align-items: center;
 	padding: 1rem;
@@ -137,11 +219,52 @@
 
 .footer {
 	width: 100%;
+	padding: 0 2rem;
 	height: var(--footer-height);
 	border-top: 1px solid var(--gray);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.footer__container {
+	height: 100%;
+	width: 100%;
+	max-width: 320px;
+	display: grid;
+	grid-template-columns: auto 3rem;
+	grid-gap: 1rem;
+	align-items: center;
+	position: relative;
+	font-size: 0.8rem;
+}
+
+.footer__hand {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 3rem;
+}
+
+@media (min-width: 281px) {
+	.card__content__digits {
+		font-size: 1.4rem;
+	}
+	.footer__container {
+		font-size: 0.9rem;
+	}
+}
+@media (min-width: 475px) {
+	.header__logo__h1 {
+		font-size: 2.4rem;
+	}
+	.card__content__digits {
+		font-size: 2rem;
+		font-weight: 500;
+	}
+	.footer__container {
+		font-size: 1rem;
+	}
 }
 
 @media (min-width: 930px) {
