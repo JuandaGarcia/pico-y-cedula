@@ -31,12 +31,23 @@ export default function MyApp({ Component, pageProps }) {
 					property="og:description"
 					content="🏡 Mantente al tanto de los cambios en el pico y cédula en la ciudad de Cali."
 				/>
-				<meta property="og:image" content="/img/mini.png" />
-				<meta property="og:url" content="/" />
+				<meta
+					property="og:image"
+					content="https://picoycedulacali.vercel.app/img/mini.png"
+				/>
+				<meta property="og:url" content="https://picoycedulacali.vercel.app/" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content="Pico y cédula en Cali" />
 				<meta name="twitter:site" content="@JuandaGarciaDev" />
 				<meta name="twitter:creator" content="@JuandaGarciaDev" />
+				<meta
+					name="twitter:image"
+					content="https://picoycedulacali.vercel.app/img/mini.png"
+				/>
+				<meta
+					name="twitter:image:src"
+					content="https://picoycedulacali.vercel.app/img/mini.png"
+				/>
 				<meta name="twitter:image:alt" content="Pico y cédula en Cali" />
 				<meta property="og:site_name" content="Pico y cédula en Cali" />
 				<meta name="geo.placename" content="Colombia" />
