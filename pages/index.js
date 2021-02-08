@@ -41,14 +41,16 @@ const Home = () => {
 			'Viernes',
 			'Sábado',
 		]
-		const curr = new Date()
-		const first = curr.getDate() - curr.getDay()
-		let week = []
+		let curr = new Date()
+		let week = [{ day: curr.getDate(), nameDay: days[curr.getDay()] }]
 
-		for (let i = 0; i < 7; i++) {
-			const day = new Date(curr.setDate(first + i))
-			week.push({ day: day.getDate(), nameDay: days[day.getDay()] })
+		for (let i = 0; i < 6; i++) {
+			const tomorrow = new Date(curr)
+			tomorrow.setDate(tomorrow.getDate() + 1)
+			week.push({ day: tomorrow.getDate(), nameDay: days[tomorrow.getDay()] })
+			curr = tomorrow
 		}
+
 		return week
 	}, [])
 
