@@ -1,4 +1,9 @@
-# Progressive Web App Example
+## Pico y Cédula Cali
+Disponible en: https://picoycedulacali.vercel.app/
+
+![Imagen de la web](https://picoycedulacali.vercel.app/img/mini.png)
+
+## Progressive Web App Example
 
 This example uses [`next-pwa`](https://github.com/shadowwalker/next-pwa) to create a progressive web app (PWA) powered by [Workbox](https://developers.google.com/web/tools/workbox/).
 
