@@ -9,7 +9,7 @@ export default function MyApp({ Component, pageProps }) {
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 				<meta
 					name="viewport"
-					content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"
+					content="width=device-width,initial-scale=1,minimum-scale=1"
 				/>
 				<title>Pico y cédula en Cali</title>
 				<meta
