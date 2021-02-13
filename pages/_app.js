@@ -9,7 +9,7 @@ export default function MyApp({ Component, pageProps }) {
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 				<meta
 					name="viewport"
-					content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+					content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"
 				/>
 				<title>Pico y cédula en Cali</title>
 				<meta
@@ -68,6 +68,9 @@ export default function MyApp({ Component, pageProps }) {
 					sizes="32x32"
 				/>
 				<link rel="apple-touch-icon" href="/icon-152x152.png"></link>
+				<meta name="apple-mobile-web-app-title" content="Recetas" />
+				<meta name="apple-mobile-web-app-capable" content="no" />
+				<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 				<meta name="theme-color" content="#6418fb" />
 				<script
 					async
