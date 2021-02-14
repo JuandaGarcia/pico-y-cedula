@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import cn from 'classnames'
 import s from '../styles/Home.module.css'
 
 const Home = () => {
@@ -87,6 +86,24 @@ const Home = () => {
 					border: null,
 			  }
 
+	const share = e => {
+		e.preventDefault()
+		if (!navigator.share) {
+			alert('Tu navegador no soporta la Web Share API')
+			return
+		}
+
+		navigator
+			.share({
+				title: 'Pico y cédula en Cali',
+				text:
+					'🏡 Mantente al tanto de los cambios en el pico y cédula en la ciudad de Cali.',
+				url: document.location.href,
+			})
+			.then(() => alert('Contenido compartido!'))
+			.catch(error => alert('Hubo un error'))
+	}
+
 	return (
 		<div>
 			<div className={s.container}>
@@ -136,9 +153,9 @@ const Home = () => {
 					<div className={s.nav__buttons}>
 						{new Array(10).fill(null).map((item, i) => (
 							<button
-								className={cn(s.nav__buttons__button, {
-									[s.navButtonActive]: selectedDigit === i,
-								})}
+								className={`${s.nav__buttons__button} ${
+									selectedDigit === i && s.navButtonActive
+								}`}
 								onClick={() => handleClick(i)}
 								key={i}
 							>
@@ -154,7 +171,7 @@ const Home = () => {
 								const dataDay = getDayObject(leaveHome(day.day))
 								return (
 									<li key={day.nameDay}>
-										<div className={cn(s.daysList__item, dataDay.border)}>
+										<div className={`${s.daysList__item} ${dataDay.border}`}>
 											<span>{dataDay.icon}</span>
 											<span>{`${day.nameDay} ${day.day}: ${dataDay.text}`}</span>
 											{i === 0 ? (
@@ -166,6 +183,11 @@ const Home = () => {
 							})}
 						</ul>
 					</section>
+					{process.browser && window.navigator.share ? (
+						<a onClick={share} className={s.share}>
+							Compartir
+						</a>
+					) : null}
 					<section className={s.adsContainer}>
 						<a
 							className={s.adsContainer__salsa}

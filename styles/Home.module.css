@@ -84,7 +84,7 @@
 	font-weight: bold;
 }
 .card__date__span {
-	color: var(--dark);
+	color: #000;
 }
 .card:first-child .card__date {
 	background: var(--green-strong);
@@ -209,6 +209,19 @@
 	background: linear-gradient(to right, #6418fb, #3719e5);
 	color: var(--white);
 	border-radius: 1rem;
+}
+
+.share {
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 1rem;
+	border-radius: 0.625rem;
+	color: var(--white);
+	font-weight: bold;
+	text-align: center;
+	background: linear-gradient(to right, #6418fb, #3719e5);
+	cursor: pointer;
 }
 
 .adsContainer {
