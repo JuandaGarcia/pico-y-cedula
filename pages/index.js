@@ -100,8 +100,12 @@ const Home = () => {
 					'🏡 Mantente al tanto de los cambios en el pico y cédula en la ciudad de Cali.',
 				url: document.location.href,
 			})
-			.then(() => alert('Contenido compartido!'))
-			.catch(error => alert('Hubo un error'))
+			.then(() => {
+				return
+			})
+			.catch(error => {
+				return
+			})
 	}
 
 	return (
@@ -112,7 +116,9 @@ const Home = () => {
 						<h1 className={s.header__logo__h1}>Pico y Cédula Cali</h1>
 						<img
 							className={s.header__logo__img}
-							src="/img/logo.png"
+							width="4rem"
+							height="4rem"
+							src="/icons/icon-72x72.png"
 							alt="Pico y cédula CALI"
 						/>
 					</div>
@@ -197,6 +203,8 @@ const Home = () => {
 						>
 							<img
 								src="/img/salsa.png"
+								width="336"
+								height="280"
 								className={s.adsContainer__salsa__img}
 								alt="Aprende a bailar con dos, de los mejores exponentes de las SALSA."
 							/>
