@@ -104,7 +104,7 @@ const Home = () => {
 				<section className={s.cardsContainer}>
 					<article className={s.card}>
 						<div className={s.card__date}>
-							<span>{today}</span>
+							<span className={s.card__date__span}>{today}</span>
 						</div>
 						<div className={s.card__content}>
 							<h3 className={s.card__content__title}>
@@ -117,7 +117,7 @@ const Home = () => {
 					</article>
 					<article className={s.card}>
 						<div className={s.card__date}>
-							<span>{today}</span>
+							<span className={s.card__date__span}>{today}</span>
 						</div>
 						<div className={s.card__content}>
 							<h3 className={s.card__content__title}>

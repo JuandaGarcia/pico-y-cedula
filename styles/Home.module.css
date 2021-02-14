@@ -33,7 +33,7 @@
 
 .header__logo__img {
 	width: 4rem;
-	height: auto;
+	height: 4rem;
 }
 
 .header__date {
@@ -82,6 +82,9 @@
 	padding: 0.2rem 0.5rem;
 	border-radius: 0.3125rem;
 	font-weight: bold;
+}
+.card__date__span {
+	color: var(--dark);
 }
 .card:first-child .card__date {
 	background: var(--green-strong);
