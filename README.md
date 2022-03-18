@@ -1,7 +1,7 @@
 ## Pico y Cédula Cali
-Disponible en: https://picoycedulacali.vercel.app/
+Disponible en: https://pufi.vercel.app/
 
-![Imagen de la web](https://picoycedulacali.vercel.app/img/mini.png)
+![Imagen de la web](https://pufi.vercel.app/img/repo.png)
 
 ## Progressive Web App Example
 
